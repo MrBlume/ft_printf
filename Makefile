@@ -1,6 +1,6 @@
 SRCS		= $(wildcard *.c)
 OBJS		= ${SRCS:.c=.o}
-HEADERS		= ft_printh.h
+HEADERS		= ft_printf.h
 NAME		= libftprintf.a
 
 CC			= cc

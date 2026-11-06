@@ -21,13 +21,12 @@
 
 int		ft_printf(const char *base, ...);
 
-void	handler_c(char c);
-void	handler_s(char *str);
-void	handler_p(char *ptr);
-void	handler_d(int n);
-void	handler_i(int n);
-void	handler_u(unsigned int n);
-void	handler_x(int n);
-void	handler_X(int n);
+int handler_c(char c);
+int handler_s(char *str);
+int	handler_p(void *ptr);
+int	handler_d(int n);
+int	handler_u(unsigned int n);
+
+int putnbr_base(int nbr, char *base);
 
 #endif

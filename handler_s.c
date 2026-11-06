@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   handler_s.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advasseu <advasseu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blume <blume@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/27 09:20:49 by advasseu          #+#    #+#             */
-/*   Updated: 2026/10/29 09:20:40 by advasseu         ###   ########.fr       */
+/*   Created: 2026/11/06 17:40:17 by blume             #+#    #+#             */
+/*   Updated: 2026/11/06 18:27:45 by blume            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	handler_s(char *str)
+int	handler_s(char *str)
 {
-	write(1, str, ft_strlen(str));
+	int	count;
+
+	count = ft_strlen(str);
+	write(1, str, count);
+	return (count);
 }

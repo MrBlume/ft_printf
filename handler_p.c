@@ -3,16 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   handler_p.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advasseu <advasseu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blume <blume@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 09:20:49 by advasseu          #+#    #+#             */
-/*   Updated: 2026/11/03 10:02:00 by advasseu         ###   ########.fr       */
+/*   Updated: 2026/11/06 18:14:17 by blume            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <unistd.h>
 
-void	handler_p(char *ptr)
+int putnbr_base_len(uintptr_t nbr, char *base, int lenbase)
 {
-	write(1, (void *)ptr, 16);
+    int count = 0;
+
+    if (nbr >= (uintptr_t)lenbase)
+    {
+        count += putnbr_base_len(nbr / lenbase, base, lenbase);
+    }
+    write(1,&base[nbr % lenbase], 1);
+    count++;
+    
+    return (count);
+}
+
+int	handler_p(void *ptr)
+{
+	handler_s("0x");
+	return(putnbr_base_len((uintptr_t)ptr, "0123456789abcdef", 16) + 2);
 }
