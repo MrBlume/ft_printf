@@ -6,7 +6,7 @@
 /*   By: blume <blume@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 09:16:08 by advasseu          #+#    #+#             */
-/*   Updated: 2026/11/24 15:23:07 by blume            ###   ########.fr       */
+/*   Updated: 2026/11/24 17:33:59 by blume            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	handle_conv(char spec, va_list vars)
 	else if (spec == 'p')
 		return (handler_p(va_arg(vars, void *)));
 	else if (spec == 'd' || spec == 'i')
-		return (handler_d(va_arg(vars, int)));
+		return (putnbr_base(va_arg(vars, int), "0123456789"));
 	else if (spec == 'u')
 		return (putnbr_unsigned_base(va_arg(vars, unsigned int), "0123456789"));
 	else if (spec == 'x')
