@@ -6,7 +6,7 @@
 /*   By: blume <blume@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 09:20:49 by advasseu          #+#    #+#             */
-/*   Updated: 2026/11/06 18:14:17 by blume            ###   ########.fr       */
+/*   Updated: 2026/11/24 12:28:50 by blume            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int putnbr_base_len(uintptr_t nbr, char *base, int lenbase)
 
 int	handler_p(void *ptr)
 {
+    if (!ptr)
+		return write(1, "(nil)", 5);
 	handler_s("0x");
 	return(putnbr_base_len((uintptr_t)ptr, "0123456789abcdef", 16) + 2);
 }

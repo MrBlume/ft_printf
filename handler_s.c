@@ -6,17 +6,16 @@
 /*   By: blume <blume@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 17:40:17 by blume             #+#    #+#             */
-/*   Updated: 2026/11/06 18:27:45 by blume            ###   ########.fr       */
+/*   Updated: 2026/11/24 12:24:31 by blume            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft/libft.h"
 
 int	handler_s(char *str)
 {
-	int	count;
-
-	count = ft_strlen(str);
-	write(1, str, count);
-	return (count);
+	if (!str)
+		return write(1, "(null)", 6);
+	return write(1, str, ft_strlen(str));
 }
