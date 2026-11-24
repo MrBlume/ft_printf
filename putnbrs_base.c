@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putnbr_base.c                                      :+:      :+:    :+:   */
+/*   putnbrs_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advasseu <advasseu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blume <blume@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:32:59 by blume             #+#    #+#             */
-/*   Updated: 2026/11/10 09:45:12 by advasseu         ###   ########.fr       */
+/*   Updated: 2026/11/24 15:23:30 by blume            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,27 @@ int	putnbr_base(int nbr, char *base)
 		count += putnbr_base(nb / lenbase, base);
 	handler_c(base[nb % lenbase]);
 	return (count++);
+}
+
+int	putnbr_unsigned_base(unsigned long nbr, const char *base)
+{
+	unsigned long	lenbase;
+	int				count;
+	int				ret;
+
+	lenbase = (unsigned long)ft_strlen((char *)base);
+	if (lenbase < 2)
+		return (-1);
+	count = 0;
+	if (nbr >= lenbase)
+	{
+		ret = putnbr_unsigned_base(nbr / lenbase, base);
+		if (ret < 0)
+			return (-1);
+		count += ret;
+	}
+	if (handler_c(base[nbr % lenbase]) < 0)
+		return (-1);
+	count++;
+	return (count);
 }

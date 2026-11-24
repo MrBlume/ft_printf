@@ -6,7 +6,7 @@
 /*   By: blume <blume@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 09:20:49 by advasseu          #+#    #+#             */
-/*   Updated: 2026/11/24 12:40:55 by blume            ###   ########.fr       */
+/*   Updated: 2026/11/24 15:15:17 by blume            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int	putnbr_base_len(uintptr_t nbr, char *base, int lenbase)
 	count = 0;
 	if (nbr >= (uintptr_t)lenbase)
 		count += putnbr_base_len(nbr / lenbase, base, lenbase);
-	write(1, &base[nbr % lenbase], 1);
-	return (count++);
+	if (write(1, &base[nbr % lenbase], 1) < 0)
+		return (-1);
+	count++;
+	return (count);
 }
 
 int	handler_p(void *ptr)

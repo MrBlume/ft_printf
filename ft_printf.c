@@ -3,20 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: advasseu <advasseu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: blume <blume@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 09:16:08 by advasseu          #+#    #+#             */
-/*   Updated: 2026/11/10 09:45:39 by advasseu         ###   ########.fr       */
+/*   Updated: 2026/11/24 15:23:07 by blume            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static int	handle_conv(char spec, va_list vars)
+{
+	if (spec == 'c')
+		return (handler_c((char)va_arg(vars, int)));
+	else if (spec == 's')
+		return (handler_s(va_arg(vars, char *)));
+	else if (spec == 'p')
+		return (handler_p(va_arg(vars, void *)));
+	else if (spec == 'd' || spec == 'i')
+		return (handler_d(va_arg(vars, int)));
+	else if (spec == 'u')
+		return (putnbr_unsigned_base(va_arg(vars, unsigned int), "0123456789"));
+	else if (spec == 'x')
+		return (putnbr_unsigned_base(va_arg(vars, unsigned int), "0123456789abcdef"));
+	else if (spec == 'X')
+		return (putnbr_unsigned_base(va_arg(vars, unsigned int), "0123456789ABCDEF"));
+	else if (spec == '%')
+		return (write(1, "%", 1));
+	return (-1);
+}
+
 int	ft_printf(const char *base, ...)
 {
 	va_list	vars;
 	int		count;
+	int		ret;
 
+	if (!base)
+		return (-1);
 	count = 0;
 	va_start(vars, base);
 	while (*base)
@@ -24,29 +48,18 @@ int	ft_printf(const char *base, ...)
 		if (*base == '%')
 		{
 			base++;
-			if (*base == 'c')
-				count += handler_c((char)va_arg(vars, int));
-			if (*base == 's')
-				count += handler_s(va_arg(vars, char *));
-			if (*base == 'p')
-				count += handler_p((void *)va_arg(vars, char *));
-			if (*base == 'd' || *base == 'i')
-				count += handler_d((int)va_arg(vars, int));
-			if (*base == 'u')
-				count += putnbr_base((int)va_arg(vars, int), "0123456789");
-			if (*base == 'x')
-				count += putnbr_base((int)va_arg(vars, int), "0123456789abcdef");
-			if (*base == 'X')
-				count += putnbr_base((int)va_arg(vars, int), "0123456789ABCDEF");
-			if (*base == '%')
-				count += write(1, "%", 1);
+			if (!*base)
+				return (va_end(vars), -1);
+			ret = handle_conv(*base, vars);
 		}
 		else
-			count += write(1, base, 1);
+			ret = write(1, base, 1);
+		if (ret < 0)
+			return (va_end(vars), -1);
+		count += ret;
 		base++;
 	}
-	va_end(vars);
-	return (count);
+	return (va_end(vars), count);
 }
 
 // int	main(void)
