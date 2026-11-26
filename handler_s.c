@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handler_s.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blume <blume@student.42.fr>                +#+  +:+       +#+        */
+/*   By: advasseu <advasseu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 17:40:17 by blume             #+#    #+#             */
-/*   Updated: 2026/11/24 17:32:54 by blume            ###   ########.fr       */
+/*   Updated: 2026/11/26 09:37:29 by advasseu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	handler_s(char *str)
 {
 	if (!str)
-		return write(1, "(null)", 6);
-	return write(1, str, ft_strlen(str));
+		return (write(1, "(null)", 6));
+	return (write(1, str, ft_strlen(str)));
 }
