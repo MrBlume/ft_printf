@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blume <blume@student.42.fr>                +#+  +:+       +#+        */
+/*   By: advasseu <advasseu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 09:33:03 by advasseu          #+#    #+#             */
-/*   Updated: 2026/11/24 17:32:33 by blume            ###   ########.fr       */
+/*   Updated: 2026/11/26 09:53:57 by advasseu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int	handler_s(char *str);
 int	handler_p(void *ptr);
 
 int	putnbr_base(long nbr, char *base);
-int	putnbr_unsigned_base(unsigned long nbr, const char *base);
+int	putnbr_ubase(unsigned long nbr, const char *base);
 
 #endif

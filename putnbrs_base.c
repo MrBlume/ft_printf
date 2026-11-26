@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   putnbrs_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blume <blume@student.42.fr>                +#+  +:+       +#+        */
+/*   By: advasseu <advasseu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:32:59 by blume             #+#    #+#             */
-/*   Updated: 2026/11/24 17:33:00 by blume            ###   ########.fr       */
+/*   Updated: 2026/11/26 10:11:42 by advasseu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	putnbr_base(long nbr, char *base)
 	}
 	if (nbr >= 10)
 	{
-		ret = putnbr_unsigned_base(nbr / ft_strlen((char *)base), base);
+		ret = putnbr_ubase(nbr / ft_strlen((char *)base), base);
 		if (ret < 0)
 			return (-1);
 		count += ret;
@@ -38,7 +38,7 @@ int	putnbr_base(long nbr, char *base)
 	return (count);
 }
 
-int	putnbr_unsigned_base(unsigned long nbr, const char *base)
+int	putnbr_ubase(unsigned long nbr, const char *base)
 {
 	unsigned long	lenbase;
 	int				count;
@@ -50,7 +50,7 @@ int	putnbr_unsigned_base(unsigned long nbr, const char *base)
 	count = 0;
 	if (nbr >= lenbase)
 	{
-		ret = putnbr_unsigned_base(nbr / lenbase, base);
+		ret = putnbr_ubase(nbr / lenbase, base);
 		if (ret < 0)
 			return (-1);
 		count += ret;

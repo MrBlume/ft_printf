@@ -24,6 +24,7 @@ $(LIBFT):
 
 clean:
 			rm -f ${OBJS}
+			@make -C $(LIBFT_PATH) fclean
 
 fclean:		clean
 			rm -f ${NAME}
