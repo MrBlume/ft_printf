@@ -3,10 +3,20 @@
 # ft_printf
 
 ## Description
-
+This project consists in the recreation of some of the printf functionalities such as :
 
 ### Content
-
+| Function | Description |
+| :--- | :--- |
+| `%c` | Prints a single character. |
+| `%s` | Prints a string. |
+| `%p` | Prints a pointer argument. |
+| `%d` | Prints a decimal number. |
+| `%i` | Prints an integer. |
+| `%u` | Prints an unsigned decimal. |
+| `%x` | Prints a number in hexadecimal. Lowercase format. |
+| `%X` | Prints a number in hexadecimal. Uppercase format. |
+| `%%` | Prints a percent sign. |
 
 ## Instructions
 This project is provided with a Makefile that has the following rules :
@@ -28,4 +38,4 @@ This project is provided with a Makefile that has the following rules :
 * Google
 
 ### Usage of AI
-AI was used for some main and tests.
+None
